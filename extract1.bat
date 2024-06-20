@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 
 set "sevenZipPath=C:\Program Files\7-Zip\7z.exe"  REM Set the path to 7-Zip executable
-set "rootDir=C:\Users\sirou\to_extract"  REM Set the root directory where you want to start the operation
+set "rootDir=C:\Users\Downloads\to_extract"  REM Set the root directory where you want to start the operation
 
 
 echo Script started at: %date% %time%
