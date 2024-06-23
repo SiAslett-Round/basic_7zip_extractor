@@ -4,9 +4,7 @@ setlocal enabledelayedexpansion
 set "sevenZipPath=C:\Program Files\7-Zip\7z.exe"  REM Set the path to 7-Zip executable
 set "rootDir=C:\Your\Root\Directory"  REM Set the root directory where you want to start the operation
 
-echo Script started at:
-date /t
-time /t
+echo Script started at: %date% %time%
 
 cd /d "%rootDir%"
 
@@ -39,8 +37,6 @@ for /d %%d in (*) do (
     )
 )
 
-echo Operation completed at:
-date /t
-time /t
+echo Script Completed at: %date% %time%
 
 pause
