@@ -2,11 +2,11 @@
 setlocal enabledelayedexpansion
 
 set "sevenZipPath=C:\Program Files\7-Zip\7z.exe"  REM Set the path to 7-Zip executable
-set "rootDir=C:\Users\Downloads\to_extract"  REM Set the root directory where you want to start the operation
+set "rootDir=C:\Your\Root\Directory"  REM Set the root directory where you want to start the operation
 
-
-echo Script started at: %date% %time%
-
+echo Script started at:
+date /t
+time /t
 
 cd /d "%rootDir%"
 
@@ -20,12 +20,10 @@ for /d %%d in (*) do (
             "%sevenZipPath%" x "%%f" -o"%%d"
             if !errorlevel! equ 0 (
                 echo Extraction successful: "%%f"
-                echo Deleting all files except .mpg, .mp4, and .nfo in %%d...
-                for %%x in ("%%d\*") do (
-                    if /i not "%%~xx"==".mpg" if /i not "%%~xx"==".mp4" if /i not "%%~xx"==".nfo" (
-                        echo Deleting "%%x"
-                        del /q "%%x"
-                    )
+                echo Deleting all files with extensions starting with .r in %%d...
+                for %%x in ("%%d\*.r*") do (
+                    echo Deleting "%%x"
+                    del /q "%%x"
                 )
             ) else (
                 echo Failed to extract "%%f".
@@ -41,8 +39,11 @@ for /d %%d in (*) do (
     )
 )
 
+echo Operation completed at:
+date /t
+time /t
 
-echo Operation completed at: %date% %time%
+pause
 
 
 pause
