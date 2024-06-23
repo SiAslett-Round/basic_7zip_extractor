@@ -20,12 +20,10 @@ for /d %%d in (*) do (
             "%sevenZipPath%" x "%%f" -o"%%d"
             if !errorlevel! equ 0 (
                 echo Extraction successful: "%%f"
-                echo Deleting all files with extensions starting with .r in %%d...
-                for %%x in ("%%d\*") do (
-                    if /i "%%~xx:~0,2"==".r" (
-                        echo Deleting "%%x"
-                        del /q "%%x"
-                    )
+                echo Deleting .rar and .rXX files in %%d...
+                for %%x in ("%%d\*.rar" "%%d\*.r??") do (
+                    echo Deleting "%%x"
+                    del /q "%%x"
                 )
             ) else (
                 echo Failed to extract "%%f".
@@ -44,9 +42,5 @@ for /d %%d in (*) do (
 echo Operation completed at:
 date /t
 time /t
-
-pause
-
-
 
 pause
