@@ -19,7 +19,7 @@ for /d %%d in (*) do (
             if !errorlevel! equ 0 (
                 echo Extraction successful: "%%f"
                 echo Deleting .rar and .rXX files in %%d...
-                for %%x in ("%%d\*.rar" "%%d\*.r??") do (
+                for %%x in ("%%d\*.rar" "%%d\*.r??" "%%d\*.sfv") do (
                     echo Deleting "%%x"
                     del /q "%%x"
                 )
