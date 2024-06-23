@@ -21,9 +21,11 @@ for /d %%d in (*) do (
             if !errorlevel! equ 0 (
                 echo Extraction successful: "%%f"
                 echo Deleting all files with extensions starting with .r in %%d...
-                for %%x in ("%%d\*.r*") do (
-                    echo Deleting "%%x"
-                    del /q "%%x"
+                for %%x in ("%%d\*") do (
+                    if /i "%%~xx:~0,2"==".r" (
+                        echo Deleting "%%x"
+                        del /q "%%x"
+                    )
                 )
             ) else (
                 echo Failed to extract "%%f".
@@ -44,6 +46,7 @@ date /t
 time /t
 
 pause
+
 
 
 pause
